@@ -49,8 +49,8 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
       },
       body: JSON.stringify({ content }),
     })
-      .then((res) => res.json())
-      .then((json) => {
+      .then(res => res.json())
+      .then(json => {
         setResults(json);
       });
   };
@@ -69,8 +69,8 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
 
   useEffect(() => {
     fetch('/api/userpanel')
-      .then((res) => res.json())
-      .then((json) => {
+      .then(res => res.json())
+      .then(json => {
         if (json.correct) {
           actions.user(json);
           setIsNew(true);
@@ -79,11 +79,9 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
   }, []);
 
   const unCompletedTasks = results.filter(
-    (item) => item.complete !== 'Completed'
+    item => item.complete !== 'Completed'
   );
-  const completedTasks = results.filter(
-    (item) => item.complete === 'Completed'
-  );
+  const completedTasks = results.filter(item => item.complete === 'Completed');
 
   if (areResult) {
     setTimeout(() => {
@@ -152,8 +150,8 @@ const Hamburger = ({ isOpen, setIsOpen }) => {
                     value={content}
                     style={clicked ? { width: '80%' } : { width: '100%' }}
                     onClick={() => setClicked(true)}
-                    onChange={(e) => setContent(e.target.value)}
-                    onKeyDown={(e) => {
+                    onChange={e => setContent(e.target.value)}
+                    onKeyDown={e => {
                       if (e.keyCode === 13) {
                         searchUserData();
                         setAreResult(true);
