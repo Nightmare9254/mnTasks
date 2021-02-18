@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import UserTodos from './UserTodos';
-import { CounterSubscriber, useCounter } from '../../store/sub';
+import { AnimatePresence } from 'framer-motion';
 import { illustration } from '../../illustration';
+import React, { useState, useEffect } from 'react';
+import { CounterSubscriber, useCounter } from '../../store/sub';
 import Todo from '../todo/Todo';
+import UserTodos from './UserTodos';
 import styled from 'styled-components';
-import BasicLoadingAni from '../animation/BasicLoadingAni';
 import MenuBottom from '../Hamburger/MenuBottom';
 import HamburgerTop from '../Hamburger/HamburgerTop';
-import { AnimatePresence } from 'framer-motion';
 
 const StyledDiv = styled.div`
   text-align: center;
@@ -15,7 +14,7 @@ const StyledDiv = styled.div`
   filter: ${({ open }) => (open ? 'blur(3px)' : 'blur(0)')};
   background: ${({ open }) => (open ? 'rgb(235, 235, 235)' : '#fff')};
   height: 93vh;
-  @media (max-width: 350px) and (orientation: portrait){
+  @media (max-width: 350px) and (orientation: portrait) {
     padding: 1rem;
   }
 `;
@@ -25,6 +24,10 @@ const UserPanel = () => {
   const [loadingAnimation, setStartAnimation] = useState(true);
   const [state, actions] = useCounter();
   const [tasks, setTasks] = useState([]);
+
+  const filteredUnCompleted = tasks.filter(
+    (item) => item.complete !== 'Completed'
+  );
 
   useEffect(() => {
     setTimeout(() => {
@@ -56,10 +59,6 @@ const UserPanel = () => {
     loadTasks();
     actions.loadUser({ fun: handlerAdd });
   }, []);
-
-  const filteredUnCompleted = tasks.filter(
-    (item) => item.complete !== 'Completed'
-  );
 
   return (
     <>

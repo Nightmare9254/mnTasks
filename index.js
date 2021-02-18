@@ -30,7 +30,6 @@ mongoose
 
 const userRoutes = require('./routes/userRoutes');
 
-// console.log(path.join(__dirname, 'client', 'build', 'index.html'));
 app.use(cookieParser());
 app.use(
   cookieSession({
@@ -39,7 +38,6 @@ app.use(
     maxAge: 24 * 60 * 60 * 1000, // 24 hours
   })
 );
-
 
 app.use(auth);
 app.use('/', userRoutes);

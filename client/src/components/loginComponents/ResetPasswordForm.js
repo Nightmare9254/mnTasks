@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import Warning from './Warning';
-import Popup from './Popup';
 import { ForgetPassword, Star } from './Icons';
+import { Link, useHistory } from 'react-router-dom';
+import Popup from './Popup';
+import Warning from './Warning';
 
 const ResetPasswordForm = () => {
   const history = useHistory();

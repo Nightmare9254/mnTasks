@@ -1,10 +1,10 @@
+import { Link } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import React from 'react';
 import Footer from './Footer';
-import { Link } from 'react-router-dom';
-import HamburgerTop from '../Hamburger/HamburgerTop';
-import MenuBottom from '../Hamburger/MenuBottom';
-import { useCookies } from 'react-cookie';
 import EmptyBurger from '../../bgs/EmptyBurger';
+import MenuBottom from '../Hamburger/MenuBottom';
+import HamburgerTop from '../Hamburger/HamburgerTop';
 
 const About = () => {
   const [cookies] = useCookies({});

@@ -1,7 +1,7 @@
-import React from 'react';
-import { useCounter, CounterSubscriber } from '../../store/sub';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useCounter, CounterSubscriber } from '../../store/sub';
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledDiv = styled.div`
   color: ${({ changeFontColor }) =>

@@ -1,16 +1,41 @@
-import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { changePassType } from './changePassType';
+import React, { useState, useEffect } from 'react';
+import { Star, OpenEye, ClosedEye } from './Icons';
+import { useCounter, CounterSubscriber } from '../../store/sub';
+import Popup from './Popup';
 import Warning from './Warning';
 import Confetti from 'react-confetti';
-import { useHistory } from 'react-router-dom';
-import { useCounter, CounterSubscriber } from '../../store/sub';
-import { Star, OpenEye, ClosedEye } from './Icons';
-import { changePassType } from './changePassType';
-import Popup from './Popup';
 import Recaptcha from 'react-recaptcha';
 
 const RegisterationForm = () => {
+  const [catchError, setCatchError] = useState('');
+  const [passwordVis, setPasswordVis] = useState('password');
+  const [popup, setPopup] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isShown, setIsShown] = useState(true);
+  const [recaptchaLoad, setRecaptchaLoad] = useState(false);
+  const [recaptchaCheck, setRecaptachCheck] = useState(false);
   const history = useHistory();
+  const [state, actions] = useCounter();
+  const [height, width] = useWindowSize();
+
+  const [userData, setUserData] = useState({
+    Firstname: '',
+    Lastname: '',
+    Email: '',
+    Password: '',
+  });
+
+  const handlerInput = (event) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    setUserData({ ...userData, [name]: value });
+  };
+
   const useWindowSize = () => {
     const [size, setSize] = useState([window.innerHeight, window.innerWidth]);
     useEffect(() => {
@@ -24,32 +49,6 @@ const RegisterationForm = () => {
     }, []);
     return size;
   };
-
-  const [userData, setUserData] = useState({
-    Firstname: '',
-    Lastname: '',
-    Email: '',
-    Password: '',
-  });
-  const [catchError, setCatchError] = useState('');
-  const [passwordVis, setPasswordVis] = useState('password');
-  const [isShown, setIsShown] = useState(true);
-  const [height, width] = useWindowSize();
-  const [popup, setPopup] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const handlerInput = (event) => {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    setUserData({ ...userData, [name]: value });
-  };
-
-  const [recaptchaCheck, setRecaptachCheck] = useState(false);
-
-  const [recaptchaLoad, setRecaptchaLoad] = useState(false);
-
-  const [state, actions] = useCounter();
 
   const registration = () => {
     if (recaptchaLoad && recaptchaCheck) {

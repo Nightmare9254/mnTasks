@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { useCounter, CounterSubscriber } from '../../store/sub';
-import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
-import Footer from '../page/Footer';
-import Popup from '../loginComponents/Popup';
 import { Link } from 'react-router-dom';
-import BasicLoadingAni from '../animation/BasicLoadingAni';
-import Warning from '../loginComponents/Warning';
+import { useHistory } from 'react-router-dom';
+import { useCounter, CounterSubscriber } from '../../store/sub';
 import { CreditCard, Calendar, Lock, Profile } from './CreditCardIcons';
-import HamburgerTop from '../Hamburger/HamburgerTop';
+import Footer from '../page/Footer';
+import styled from 'styled-components';
+import Popup from '../loginComponents/Popup';
+import Warning from '../loginComponents/Warning';
 import MenuBottom from '../Hamburger/MenuBottom';
+import HamburgerTop from '../Hamburger/HamburgerTop';
+import BasicLoadingAni from '../animation/BasicLoadingAni';
 
 const CardCVCDate = styled.div`
   display: flex;
@@ -27,11 +27,13 @@ const Payments = ({ price }) => {
   const numberReg = /^4[0-9]{12}(?:[0-9]{3})?$/;
   const dateReg = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/;
   const cvcReg = /^[0-9]{3}$/;
+
+  const [message, setMessage] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
   const [state, actions] = useCounter();
-  const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
+
   const [cardData, setCardData] = useState({
     cardNumber: '',
     expireDate: '',
@@ -80,7 +82,9 @@ const Payments = ({ price }) => {
         history.push('/user-panel');
       }, 4000);
     } else {
-      setMessage({ message: 'Something went wrong please check your data and try again ' });
+      setMessage({
+        message: 'Something went wrong please check your data and try again ',
+      });
       setIsOpen(true);
     }
   };

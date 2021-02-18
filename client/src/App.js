@@ -1,40 +1,40 @@
-import SignUp from './components/loginComponents/SignUp';
-import SignIn from './components/loginComponents/SignIn';
-import ResetPasswordForm from './components/loginComponents/ResetPasswordForm';
-import UserPanel from './components/userDashboard/UserPanel';
-import Todo from './components/todo/Todo';
-import Terms from './components/page/Terms';
-import Policy from './components/page/Policy';
-import PayNow from './components/payments/PayNow';
-import About from './components/page/About';
-import ContactUs from './components/page/ContactUs';
-import NotFound from './components/page/NotFound';
-import HoWorks from './components/page/HoWorks';
-import Subscription from './components/payments/Subscriptions';
-import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
-import Main from './components/page/Main';
-import { useCookies } from 'react-cookie';
-import Hisotry from './components/page/History';
 import { useCounter } from './store/sub';
-import PaymentConfirm from './components/payments/PaymentConfirm';
-import PaymentMethod from './components/payments/PaymentMethod';
-import NewPassword from './components/loginComponents/NewPassword';
-import AlmostThere from './components/loginComponents/AlmostThere';
-import ConfirmAccount from './components/loginComponents/ConfirmAccount';
-import Settings from './components/page/Settings';
-import ScrollToTop from './functions/ScrollTo';
-import CookiesPopup from './components/CookiesPopup';
+import { useCookies } from 'react-cookie';
+import { Redirect } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import {
   SwitchTransition,
   RouteTransition,
 } from './components/animation/PageTransitions';
-import { useEffect, useState } from 'react';
+import Todo from './components/todo/Todo';
+import Main from './components/page/Main';
+import Terms from './components/page/Terms';
+import About from './components/page/About';
+import Policy from './components/page/Policy';
+import ScrollToTop from './functions/ScrollTo';
+import Hisotry from './components/page/History';
+import HoWorks from './components/page/HoWorks';
+import Settings from './components/page/Settings';
+import NotFound from './components/page/NotFound';
+import PayNow from './components/payments/PayNow';
+import ContactUs from './components/page/ContactUs';
+import CookiesPopup from './components/CookiesPopup';
+import SignIn from './components/loginComponents/SignIn';
+import SignUp from './components/loginComponents/SignUp';
+import UserPanel from './components/userDashboard/UserPanel';
+import Subscription from './components/payments/Subscriptions';
+import PaymentMethod from './components/payments/PaymentMethod';
+import PaymentConfirm from './components/payments/PaymentConfirm';
+import NewPassword from './components/loginComponents/NewPassword';
+import AlmostThere from './components/loginComponents/AlmostThere';
+import ConfirmAccount from './components/loginComponents/ConfirmAccount';
+import ResetPasswordForm from './components/loginComponents/ResetPasswordForm';
 
 function App() {
-  const [cookies] = useCookies({});
-  const { user, accept } = cookies;
-  const [state, actions] = useCounter();
   const [loadingAnimation, setStartAnimation] = useState(true);
+  const [cookies] = useCookies({});
+  const [state, actions] = useCounter();
+  const { user, accept } = cookies;
 
   const acceptCookieHandler = () => {
     fetch('/cookie-accept', {

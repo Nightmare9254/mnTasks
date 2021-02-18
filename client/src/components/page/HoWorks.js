@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { next } from '../Hamburger/HamburgerIcons';
 import how1 from '../../img/how1.png';
 import how2 from '../../img/how2.png';
 import how3 from '../../img/how3.png';
@@ -7,9 +8,11 @@ import how4 from '../../img/how4.png';
 import how5 from '../../img/how5.png';
 import how6 from '../../img/how6.png';
 import how7 from '../../img/how7.png';
-import { next } from '../Hamburger/HamburgerIcons';
 
 const HoWorks = () => {
+  const [nextA, setNextA] = useState(false);
+  const [imgIndex, setImgIndex] = useState(0);
+
   const howImgs = [how1, how2, how3, how5, how6, how7, how4];
   const textImg = [
     'Create a free account',
@@ -20,8 +23,6 @@ const HoWorks = () => {
     'Plenty purchase plans',
     'Many payments methods',
   ];
-  const [imgIndex, setImgIndex] = useState(0);
-  const [nextA, setNextA] = useState(false);
 
   return (
     <main className="how__main">
@@ -29,30 +30,33 @@ const HoWorks = () => {
 
       <div className="how__ContentWrapper">
         <div style={{ width: '100%' }}>
-          <Link style={{ margin: '2rem',position: 'relative',zIndex: '3' }} to="/">
+          <Link
+            style={{ margin: '2rem', position: 'relative', zIndex: '3' }}
+            to="/"
+          >
             <i>
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 49 49"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="backArrow"
-            >
-              <circle
-                cx="24.0475"
-                cy="24.0475"
-                r="23.0475"
-                stroke="#f7fafc"
-                strokeWidth="3"
-              />
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M15.344 25.55L24.56 33.4523L23.202 35L11 24.5L23.224 14L24.556 15.5813L15.348 23.45H39V25.55H15.344Z"
-                fill="#f7fafc"
-              />
-            </svg>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 49 49"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="backArrow"
+              >
+                <circle
+                  cx="24.0475"
+                  cy="24.0475"
+                  r="23.0475"
+                  stroke="#f7fafc"
+                  strokeWidth="3"
+                />
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M15.344 25.55L24.56 33.4523L23.202 35L11 24.5L23.224 14L24.556 15.5813L15.348 23.45H39V25.55H15.344Z"
+                  fill="#f7fafc"
+                />
+              </svg>
             </i>
           </Link>
         </div>
