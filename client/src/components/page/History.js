@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import Task from '../todo/Task';
 import Footer from './Footer';
-import BasicLoadingAni from '../animation/BasicLoadingAni';
-import HamburgerTop from '../Hamburger/HamburgerTop';
+import Task from '../todo/Task';
 import MenuBottom from '../Hamburger/MenuBottom';
+import HamburgerTop from '../Hamburger/HamburgerTop';
+import BasicLoadingAni from '../animation/BasicLoadingAni';
 
 const History = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const filteredCompleted = tasks.filter(
+    (item) => item.complete === 'Completed'
+  );
 
   useEffect(() => {
     fetch('/api/todos')
@@ -19,10 +23,6 @@ const History = () => {
         }, 500);
       });
   }, []);
-
-  const filteredCompleted = tasks.filter(
-    (item) => item.complete === 'Completed'
-  );
 
   return (
     <>

@@ -1,9 +1,9 @@
-import React from 'react';
-import HamburgerTop from '../Hamburger/HamburgerTop';
-import Footer from './Footer';
 import { useCookies } from 'react-cookie';
-import MenuBottom from '../Hamburger/MenuBottom';
+import React from 'react';
+import Footer from './Footer';
 import EmptyBurger from '../../bgs/EmptyBurger';
+import MenuBottom from '../Hamburger/MenuBottom';
+import HamburgerTop from '../Hamburger/HamburgerTop';
 
 const Policy = () => {
   const [cookies] = useCookies({});

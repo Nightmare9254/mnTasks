@@ -1,9 +1,9 @@
-import React from 'react';
-import HamburgerTop from '../Hamburger/HamburgerTop';
-import Footer from './Footer';
-import MenuBottom from '../Hamburger/MenuBottom';
 import { useCookies } from 'react-cookie';
+import React from 'react';
+import Footer from './Footer';
 import EmptyBurger from '../../bgs/EmptyBurger';
+import MenuBottom from '../Hamburger/MenuBottom';
+import HamburgerTop from '../Hamburger/HamburgerTop';
 
 const Terms = () => {
   const [cookies] = useCookies({});

@@ -1,9 +1,9 @@
-import React from 'react';
-import Footer from '../page/Footer';
 import { Link } from 'react-router-dom';
 import { one, two, tree, four } from './paymentssvg';
-import HamburgerTop from '../Hamburger/HamburgerTop';
+import React from 'react';
+import Footer from '../page/Footer';
 import MenuBottom from '../Hamburger/MenuBottom';
+import HamburgerTop from '../Hamburger/HamburgerTop';
 
 const PaymentMethod = () => {
   return (

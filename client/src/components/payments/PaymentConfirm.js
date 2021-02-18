@@ -1,10 +1,10 @@
-import React from 'react';
-import Footer from '../page/Footer';
-import { useCounter, CounterSubscriber } from '../../store/sub';
 import { Link } from 'react-router-dom';
 import { svgIcon } from './paymentssvg';
-import HamburgerTop from '../Hamburger/HamburgerTop';
+import { useCounter, CounterSubscriber } from '../../store/sub';
+import React from 'react';
+import Footer from '../page/Footer';
 import MenuBottom from '../Hamburger/MenuBottom';
+import HamburgerTop from '../Hamburger/HamburgerTop';
 
 const PaymentConfirm = () => {
   const [state, actions] = useCounter();

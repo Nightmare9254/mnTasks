@@ -65,7 +65,6 @@ router.post('/api/newuser', async (req, res) => {
 router.post('/api/confirm', async (req, res) => {
   const { token } = req.body;
   const user = await Users.findOne({ confirmedAccountToken: token });
-  console.log(user);
   if (!user) return res.send({ message: 'Something went wrong' });
 
   user.confirmedAccount = true;
@@ -85,7 +84,6 @@ router.post('/api/resetPassword', (req, res) => {
         return res.send({ message: 'Email not found' });
       }
       const t = token(32);
-      console.log(t);
       user.resetToken = t;
       user.expireToken = Date.now() + 8000000;
       user.save().then((result) => {
@@ -150,7 +148,6 @@ router.post('/api/login', async (req, res, next) => {
   const user = { ...client };
 
   res.cookie('user', user._doc);
-  console.log(user._doc);
   res.send({ message: 'You are logged in', correct: true });
 });
 
@@ -171,7 +168,6 @@ router.post('/api/newToDo', async (req, res, next) => {
     description: Description,
     priority: Priority,
   });
-  console.log(req.session.user);
   if (req.session.user.credits < 1) {
     return res.send({
       message: "You don't have enough credits",
@@ -208,10 +204,8 @@ router.post('/api/newToDo', async (req, res, next) => {
     }
 
     res.status(200).send({ message: 'You added task', correct: true });
-    console.log(req.session.user.credits);
   } catch (e) {
     res.send({ message: 'Something went wrong' });
-    console.log(e);
   }
 });
 
@@ -300,8 +294,6 @@ router.post('/api/changeStatusTask', async (req, res) => {
 
   const sinceTime = finishedDateTask - todoDate;
 
-  console.log(sinceTime);
-
   if (sinceTime <= 86400) {
     const userCreditsUpdate = await Users.updateOne(
       { _id: req.session.user._id },
@@ -337,7 +329,6 @@ router.post('/api/message', (req, res) => {
 
 router.post('/api/searchContent', async (req, res) => {
   const { content } = req.body;
-  console.log(content);
 
   const searchData = await Todo.find({
     userId: req.session.user._id,
@@ -358,8 +349,6 @@ router.post('/api/editData', async (req, res) => {
       if (data.length < 4)
         return res.send({ message: 'Nickname must be at least 3 charakters' });
 
-      console.log(user.name);
-      console.log(data);
       if (user.name == data)
         return res.send({ message: 'Old nickname cannot be a new nickname' });
 

@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
+import { useCookies } from 'react-cookie';
+import { Star } from '../loginComponents/Icons';
+import { useHistory, Link } from 'react-router-dom';
 import Footer from './Footer';
 import Popup from '../loginComponents/Popup';
 import Warning from '../loginComponents/Warning';
-import { useHistory, Link } from 'react-router-dom';
-import { Star } from '../loginComponents/Icons';
-import { useCookies } from 'react-cookie';
-import { motion } from 'framer-motion';
-import HamburgerTop from '../Hamburger/HamburgerTop';
 import MenuBottom from '../Hamburger/MenuBottom';
+import HamburgerTop from '../Hamburger/HamburgerTop';
 
 const ContactUs = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [cookies] = useCookies({});
+  const history = useHistory();
   const { user } = cookies;
 
   const [userData, setUserData] = useState({
@@ -28,8 +28,6 @@ const ContactUs = () => {
 
     setUserData({ ...userData, [name]: value });
   };
-
-  const history = useHistory();
 
   const sendMessage = () => {
     fetch('/api/message', {

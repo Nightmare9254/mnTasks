@@ -3,23 +3,23 @@ import Footer from './Footer';
 import { CounterSubscriber, useCounter } from '../../store/sub';
 import HamburgerTop from '../Hamburger/HamburgerTop';
 import { useHistory } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+import { mountVariants } from '../animation/SlidInOut';
+import { AnimatePresence, motion } from 'framer-motion';
+import MenuBottom from '../Hamburger/MenuBottom';
 import EditPopup from '../loginComponents/EditPopup';
 import { ConverDate } from '../../functions/ConvertDate';
-import MenuBottom from '../Hamburger/MenuBottom';
-import { AnimatePresence, motion } from 'framer-motion';
-import { mountVariants } from '../animation/SlidInOut';
-import { useCookies } from 'react-cookie';
 
 const Settings = () => {
-  const [state, actions] = useCounter();
-  const [cor, setCor] = useState(false);
   const [message, setMessage] = useState('');
-  const [open, setOpen] = useState(false);
-  const [openDelete, setOpenDelete] = useState(false);
   const [password, setPassword] = useState('');
   const [editDataType, setEditDataType] = useState('');
-  const history = useHistory();
+  const [cor, setCor] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
   const [cookies] = useCookies({});
+  const history = useHistory();
+  const [state, actions] = useCounter();
   const { user } = cookies;
 
   const loadUser = () => {
@@ -214,9 +214,8 @@ const Settings = () => {
                     openEdit('nickname');
                   }}
                   className="settings__edit__button"
-                  style={openDelete ? {pointerEvents: 'none'} : {}}
+                  style={openDelete ? { pointerEvents: 'none' } : {}}
                 >
-                 
                   Edit
                 </span>
               </div>
@@ -234,7 +233,7 @@ const Settings = () => {
                     openEdit('email');
                   }}
                   className="settings__edit__button"
-                  style={openDelete ? {pointerEvents: 'none'} : {}}
+                  style={openDelete ? { pointerEvents: 'none' } : {}}
                 >
                   Edit
                 </span>
@@ -251,7 +250,7 @@ const Settings = () => {
                     openEdit('password');
                   }}
                   className="settings__edit__button"
-                  style={openDelete ? {pointerEvents: 'none'} : {}}
+                  style={openDelete ? { pointerEvents: 'none' } : {}}
                 >
                   Edit
                 </span>

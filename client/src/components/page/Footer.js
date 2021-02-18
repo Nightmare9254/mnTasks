@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 const Footer = () => {
   const [totalTasks, setTotalTasks] = useState(0);

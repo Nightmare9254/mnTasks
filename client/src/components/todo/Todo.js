@@ -8,17 +8,18 @@ import { motion } from 'framer-motion';
 import Warning from '../loginComponents/Warning';
 
 const Todo = ({ onAdd }) => {
-  const [cookies] = useCookies({});
-  const { user } = cookies;
-
+  const [message, setMessage] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = cookies;
+  const [cookies] = useCookies({});
   const [state, actions] = useCounter();
+
   const [taskData, setTaskData] = useState({
     Title: '',
     Description: '',
     Priority: 'Low',
   });
-  const [message, setMessage] = useState('');
+
   const handlerInput = (event) => {
     const target = event.target;
     const value = event.target.value;

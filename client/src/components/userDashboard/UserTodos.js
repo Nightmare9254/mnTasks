@@ -1,11 +1,9 @@
+import { useCounter } from '../../store/sub';
 import React from 'react';
 import Task from '../todo/Task';
-import { useCounter } from '../../store/sub';
-import styled from 'styled-components';
 import Todo from '../todo/Todo';
 import Footer from '../page/Footer';
-import { SlidInPresence, SlidInItems } from '../animation/PageTransitions';
-import { SlidInContainer } from '../animation/MountTransition';
+import styled from 'styled-components';
 
 const StyledDiv = styled.div`
   filter: ${({ open }) => (open ? 'blur(3px)' : 'blur(0)')};
@@ -13,11 +11,9 @@ const StyledDiv = styled.div`
   padding: 1rem;
   height: auto;
 `;
-const UserTodos = ({ tasks, onAdd, show }) => {
-  const newItems = tasks.filter((item) => item.complete !== 'Completed');
-  const [state, actions] = useCounter();
 
-  let date = new Date();
+const UserTodos = ({ tasks, onAdd, show }) => {
+  const [state, actions] = useCounter();
 
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const monthNames = [
@@ -34,9 +30,12 @@ const UserTodos = ({ tasks, onAdd, show }) => {
     'Nov',
     'Dec',
   ];
+  let date = new Date();
   let dayName = days[date.getDay()];
   let month = monthNames[date.getMonth()];
   let dayOfWeek = date.getDate();
+
+  const newItems = tasks.filter((item) => item.complete !== 'Completed');
 
   return (
     <div className="center">
