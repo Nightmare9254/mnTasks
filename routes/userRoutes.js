@@ -46,7 +46,9 @@ router.post('/api/newuser', async (req, res) => {
   try {
     const savedUser = await user.save();
     res.send({ message: 'Your account has been created!', correct: true });
-    sgMail.setApiKey(process.env.EMAILAPI);
+    sgMail.setApiKey(
+      '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'
+    );
     const msg = {
       to: req.body.Email,
       from: 'mntasks@interia.pl',
@@ -85,7 +87,9 @@ router.post('/api/resetPassword', (req, res) => {
       user.resetToken = t;
       user.expireToken = Date.now() + 8000000;
       user.save().then((result) => {
-        sgMail.setApiKey(process.env.EMAILAPI);
+        sgMail.setApiKey(
+          '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'
+        );
         const msg = {
           to: req.body.Email,
           from: 'mntasks@interia.pl',
@@ -219,7 +223,9 @@ router.post('/api/payCard', async (req, res) => {
     );
 
     req.session.user.credits += creditsAdd;
-    sgMail.setApiKey(process.env.EMAILAPI);
+    sgMail.setApiKey(
+      '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'
+    );
     const msg = {
       to: req.session.user.email,
       from: 'mntasks@interia.pl',
@@ -306,7 +312,9 @@ router.post('/api/message', (req, res) => {
 
   const { Subject, Email, Message } = req.body;
 
-  sgMail.setApiKey(process.env.EMAILAPI);
+  sgMail.setApiKey(
+    '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'
+  );
   const msg = {
     to: 'mntasks@interia.pl',
     from: 'mntasks@interia.pl',
