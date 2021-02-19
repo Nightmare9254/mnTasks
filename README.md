@@ -6,6 +6,14 @@ App was made with [mix1o].
 
 Live preview: [mnTasks]
 
+##Demo account
+If you don't want to create account use this one:
+*login: test@mntasks.com
+*Password: asdasd
+*Credit card: 4242 4242 4242 4242
+*CVV: 123
+
+
 ## What you can do
 
 - Create and Login to your account
