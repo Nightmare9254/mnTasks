@@ -1,12 +1,22 @@
 h1::selection,
 h2::selection,
 h3::selection,
+h4::selection,
 p::selection,
-.label__input::selection,
 strong::selection,
 span::selection,
+.label__input::selection,
 .select__diff::selection,
-.heading__btn-sign::selection {
+.heading__btn-sign::selection,
+.btn-user-panel::selection,
+.select__options::selection,
+.label__textarea::selection,
+.btn-tasks-new::selection,
+.footer__nav > p > a::selection,
+.btn__main--empty::selection,
+.payment__cardInput::selection,
+.settings__button__delete::selection,
+.input::selection {
   background: var(--main-color-green);
   color: var(--light-grey);
 }
@@ -18,7 +28,13 @@ a::selection,
 .btn__main--full::selection,
 .label__span--link::selection,
 .heading__btn::selection,
-.heading__span::selection {
+.heading__span::selection,
+.nav__items--logout::selection,
+.btn-newtask::selection,
+.card__normal--highlighted > p::selection,
+.card__normal--highlighted > p::selection,
+.card__normal--highlighted > section > h3::selection,
+.card__normal--highlighted > section > div > p::selection {
   background: #fff;
   color: var(--main-color-green);
 }

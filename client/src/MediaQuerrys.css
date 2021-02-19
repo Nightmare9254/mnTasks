@@ -746,4 +746,8 @@
     font-weight: 900;
     color: var(--white);
   }
+  .selectedGreen > svg,
+  .payment__single > button > svg {
+    transform: scale(2);
+  }
 }

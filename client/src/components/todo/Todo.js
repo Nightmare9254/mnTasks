@@ -10,8 +10,8 @@ import Warning from '../loginComponents/Warning';
 const Todo = ({ onAdd }) => {
   const [message, setMessage] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const { user } = cookies;
   const [cookies] = useCookies({});
+  const { user } = cookies;
   const [state, actions] = useCounter();
 
   const [taskData, setTaskData] = useState({
