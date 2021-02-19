@@ -19,7 +19,6 @@ const RegisterationForm = () => {
   const [recaptchaCheck, setRecaptachCheck] = useState(false);
   const history = useHistory();
   const [state, actions] = useCounter();
-  const [height, width] = useWindowSize();
 
   const [userData, setUserData] = useState({
     Firstname: '',
@@ -49,6 +48,7 @@ const RegisterationForm = () => {
     }, []);
     return size;
   };
+  const [height, width] = useWindowSize();
 
   const registration = () => {
     if (recaptchaLoad && recaptchaCheck) {
