@@ -17,10 +17,14 @@ app.use(cors());
 const PORT = process.env.PORT || 8000;
 
 mongoose
-  .connect(process.env.MANGODB_URI || process.env.MANGODB_LINK, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    process.env.MANGODB_URI ||
+      'mongodb+srv://admin:Zxcvbnm@cluster0.wjlg0.mongodb.net/test?retryWrites=true&w=majority',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then((result) => console.log('conntected'))
   .catch((err) => console.log(err));
 
