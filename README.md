@@ -27,6 +27,7 @@ If you don't want to create account use this one:
 - NodeJS
 - Express
 - Mongoose
+- MongoDB
 
 [mix1o]: https://github.com/mix1o
 [mntasks]: https://mntasks.herokuapp.com/
