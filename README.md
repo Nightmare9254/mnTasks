@@ -1,6 +1,6 @@
 # mnTasks
 
-Simple react app with nodejs backend to organize your daily workflow
+Simple react todo app with nodejs backend to organize your daily workflow. 
 
 App was made with [mix1o].
 
@@ -19,7 +19,7 @@ If you don't want to create account use this one:
 - Create and Login to your account
 - Add new tasks
 - Buy credits using creditcard
-- Delete your account/ hange your pasword/email/nickname
+- Delete your account, change your pasword/email/nickname
 
 ## Tech Stack
 
