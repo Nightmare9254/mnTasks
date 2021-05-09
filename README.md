@@ -29,6 +29,7 @@ If you don't want to create account use this one:
 - Mongoose
 - MongoDB
 - Send grid
+- google reCaptcha
 
 [mix1o]: https://github.com/mix1o
 [mntasks]: https://mntasks.herokuapp.com/
