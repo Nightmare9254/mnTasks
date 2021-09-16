@@ -25,8 +25,8 @@ mongoose
       useUnifiedTopology: true,
     }
   )
-  .then((result) => console.log('conntected'))
-  .catch((err) => console.log(err));
+  .then(result => console.log('conntected'))
+  .catch(err => console.log(err));
 
 const userRoutes = require('./routes/userRoutes');
 
