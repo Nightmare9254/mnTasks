@@ -15,6 +15,8 @@ To-do app with react framework for front-end and node JS as a back-end. In this 
 
 Live preview: [mnTasks](https://mntasks.herokuapp.com/)
 
+![Capture](https://user-images.githubusercontent.com/49620354/133835678-fe8bb2fe-810d-46c5-8f50-aa8271b7c6f9.JPG)
+
 ### Demo account
 * login: test@mntasks.com
 * Password: asdasd
