@@ -1,7 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
 import { illustration } from '../../illustration';
 import React, { useState, useEffect } from 'react';
-import { CounterSubscriber, useCounter } from '../../store/sub';
+import { useCounter } from '../../store/sub';
 import Todo from '../todo/Todo';
 import UserTodos from './UserTodos';
 import styled from 'styled-components';
@@ -26,7 +26,7 @@ const UserPanel = () => {
   const [tasks, setTasks] = useState([]);
 
   const filteredUnCompleted = tasks.filter(
-    (item) => item.complete !== 'Completed'
+    item => item.complete !== 'Completed'
   );
 
   useEffect(() => {
@@ -37,14 +37,14 @@ const UserPanel = () => {
 
   const loadTasks = () => {
     fetch('/api/todos')
-      .then((response) => response.json())
-      .then((json) => {
+      .then(response => response.json())
+      .then(json => {
         setTasks(json);
       });
 
     fetch('/api/userpanel')
-      .then((res) => res.json())
-      .then((json) => {
+      .then(res => res.json())
+      .then(json => {
         if (json.correct) {
           actions.user(json);
         }

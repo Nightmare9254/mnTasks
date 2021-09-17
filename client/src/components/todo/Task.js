@@ -13,11 +13,10 @@ const Task = ({
   fontColor,
   finished,
   onAdd,
-  searchUserData,
-  searchUserBool,
+
   bgColorHistory,
 }) => {
-  const sendStatus = (idTask) => {
+  const sendStatus = idTask => {
     fetch('/api/changeStatusTask', {
       method: 'POST',
       headers: {

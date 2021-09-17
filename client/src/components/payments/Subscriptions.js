@@ -1,4 +1,4 @@
-import { useCounter, CounterSubscriber } from '../../store/sub';
+import { useCounter } from '../../store/sub';
 import React from 'react';
 import Card from './Card';
 import Footer from '../page/Footer';

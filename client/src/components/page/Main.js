@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { woman } from './Illustrations';
-import { useCounter, CounterSubscriber } from '../../store/sub';
+import { useCounter } from '../../store/sub';
 
 const Main = () => {
-  const [state, actions] = useCounter();
+  const [, actions] = useCounter();
 
   useEffect(() => {
     setTimeout(() => {

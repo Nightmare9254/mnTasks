@@ -12,7 +12,7 @@ const StyledDiv = styled.div`
   height: auto;
 `;
 
-const UserTodos = ({ tasks, onAdd, show }) => {
+const UserTodos = ({ tasks, onAdd }) => {
   const [state, actions] = useCounter();
 
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -35,7 +35,7 @@ const UserTodos = ({ tasks, onAdd, show }) => {
   let month = monthNames[date.getMonth()];
   let dayOfWeek = date.getDate();
 
-  const newItems = tasks.filter((item) => item.complete !== 'Completed');
+  const newItems = tasks.filter(item => item.complete !== 'Completed');
 
   return (
     <div className="center">

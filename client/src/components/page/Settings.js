@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Footer from './Footer';
-import { CounterSubscriber, useCounter } from '../../store/sub';
+import { useCounter } from '../../store/sub';
 import HamburgerTop from '../Hamburger/HamburgerTop';
 import { useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
@@ -14,7 +14,6 @@ const Settings = () => {
   const [message, setMessage] = useState('');
   const [password, setPassword] = useState('');
   const [editDataType, setEditDataType] = useState('');
-  const [cor, setCor] = useState(false);
   const [open, setOpen] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const [cookies] = useCookies({});
@@ -24,11 +23,10 @@ const Settings = () => {
 
   const loadUser = () => {
     fetch('/api/userpanel')
-      .then((res) => res.json())
-      .then((json) => {
+      .then(res => res.json())
+      .then(json => {
         if (json.correct) {
           actions.user(json);
-          setCor(true);
         }
       });
   };
@@ -41,8 +39,8 @@ const Settings = () => {
       },
       body: JSON.stringify({ password }),
     })
-      .then((res) => res.json())
-      .then((json) => {
+      .then(res => res.json())
+      .then(json => {
         if (json.correct) {
           history.push('/');
           window.location.reload();
@@ -60,8 +58,8 @@ const Settings = () => {
       },
       body: JSON.stringify({ data, index }),
     })
-      .then((res) => res.json())
-      .then((json) => {
+      .then(res => res.json())
+      .then(json => {
         if (json.correct) {
           loadUser();
           setTimeout(() => {
@@ -78,7 +76,7 @@ const Settings = () => {
 
   const dateOutput = ConverDate(new Date(user.createdDate));
 
-  const openEdit = (argument) => {
+  const openEdit = argument => {
     setOpen(true);
     setEditDataType(argument);
   };
@@ -132,11 +130,11 @@ const Settings = () => {
             <input
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
               className="input"
               aria-label="password"
               placeholder="Password"
-              onKeyDown={(e) => {
+              onKeyDown={e => {
                 if (e.keyCode === 13) {
                   deleteAccount();
                 }
