@@ -7,10 +7,10 @@ const BiggerPolygon = styled.div`
   @media (min-width: 576px) and (orientation: landscape) {
     height: 57px;
   }
-   @media (min-width: 1366px) {
+  @media (min-width: 1366px) {
     display: none;
-  } ;
-  position: fixed
+  }
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;

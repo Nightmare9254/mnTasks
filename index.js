@@ -30,15 +30,6 @@ mongoose
 
 const userRoutes = require('./routes/userRoutes');
 
-<<<<<<< HEAD
-=======
-app.use(express.static(path.join(__dirname, 'client', 'build')));
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-});
-// console.log(path.join(__dirname, 'client', 'build', 'index.html'));
-
->>>>>>> 4b3bd03 (asd)
 app.use(cookieParser());
 app.use(
   cookieSession({

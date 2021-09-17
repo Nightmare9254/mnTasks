@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { home, plusSign, phone2 } from './HamburgerIcons';
-import { useCounter, CounterSubscriber } from '../../store/sub';
+import { useCounter } from '../../store/sub';
 
 function MenuBottom() {
-  const [state, actions] = useCounter();
+  const [, actions] = useCounter();
 
   return (
     <nav className="menuBottom">

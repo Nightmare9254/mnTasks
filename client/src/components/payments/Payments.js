@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { useCounter, CounterSubscriber } from '../../store/sub';
+import { useCounter } from '../../store/sub';
 import { CreditCard, Calendar, Lock, Profile } from './CreditCardIcons';
 import Footer from '../page/Footer';
 import styled from 'styled-components';
@@ -32,7 +32,7 @@ const Payments = ({ price }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const [state, actions] = useCounter();
+  const [state] = useCounter();
 
   const [cardData, setCardData] = useState({
     cardNumber: '',
@@ -41,14 +41,14 @@ const Payments = ({ price }) => {
     ownerName: '',
   });
 
-  const handlerInput = (e) => {
+  const handlerInput = e => {
     const target = e.target;
     const value = target.value;
     const name = target.name;
     setCardData({ ...cardData, [name]: value });
   };
 
-  const onEnterSubmit = (e) => {
+  const onEnterSubmit = e => {
     if (e.keyCode === 13) {
       handlerInput(e);
     }
@@ -89,7 +89,7 @@ const Payments = ({ price }) => {
     }
   };
 
-  const formatCard = (e) => {
+  const formatCard = e => {
     const target = e.target;
     switch (e.target.name) {
       case 'cardNumber':
@@ -141,7 +141,7 @@ const Payments = ({ price }) => {
             <h2 className="heading-2">Provide credit card details</h2>
             <section
               className="payment__finish  "
-              onKeyUp={(e) => onEnterSubmit(e)}
+              onKeyUp={e => onEnterSubmit(e)}
             >
               <label className="payment__cardLabel ">
                 <p className="payment__labelTitle">Card number: </p>
@@ -154,7 +154,7 @@ const Payments = ({ price }) => {
                   name="cardNumber"
                   maxLength="19"
                   value={cardData.cardNumber}
-                  onChange={(e) => {
+                  onChange={e => {
                     formatCard(e);
                     handlerInput(e);
                   }}
@@ -175,7 +175,7 @@ const Payments = ({ price }) => {
                   name="ownerName"
                   inputMode="text"
                   value={cardData.ownerName}
-                  onChange={(e) => {
+                  onChange={e => {
                     handlerInput(e);
                   }}
                 />
@@ -193,7 +193,7 @@ const Payments = ({ price }) => {
                     placeholder="22/21"
                     maxLength="5"
                     value={cardData.expireDate}
-                    onChange={(e) => {
+                    onChange={e => {
                       formatCard(e);
                       handlerInput(e);
                     }}
@@ -212,7 +212,7 @@ const Payments = ({ price }) => {
                     autoComplete="cc-csc"
                     inputMode="numeric"
                     value={cardData.cvc}
-                    onChange={(e) => handlerInput(e)}
+                    onChange={e => handlerInput(e)}
                     type="password"
                   />
                 </Cardinfo>

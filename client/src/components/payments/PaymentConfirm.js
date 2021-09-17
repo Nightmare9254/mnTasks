@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import { svgIcon } from './paymentssvg';
-import { useCounter, CounterSubscriber } from '../../store/sub';
+import { useCounter } from '../../store/sub';
 import React from 'react';
 import Footer from '../page/Footer';
 import MenuBottom from '../Hamburger/MenuBottom';
 import HamburgerTop from '../Hamburger/HamburgerTop';
 
 const PaymentConfirm = () => {
-  const [state, actions] = useCounter();
+  const [state] = useCounter();
 
   return (
     <div id="top__component">

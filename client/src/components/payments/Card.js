@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useCounter, CounterSubscriber } from '../../store/sub';
+import { useCounter } from '../../store/sub';
 import React from 'react';
 import styled from 'styled-components';
 
