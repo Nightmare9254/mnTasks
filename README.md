@@ -50,8 +50,27 @@ Install dependencies
 Start the server
 
 ```bash
-  npm run start
-``` -->
+  npm start
+```
+
+From project directory go to client
+
+```bash
+  cd client
+```
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start client
+
+```bash
+  npm start
+```
+
+-->
 
 ## Tech Stack and Packages
 
