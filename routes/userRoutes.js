@@ -84,7 +84,7 @@ router.post('/api/resetPassword', (req, res) => {
       const t = token(32);
       user.resetToken = t;
       user.expireToken = Date.now() + 8000000;
-      user.save().then(result => {
+      user.save().then((result) => {
         sgMail.setApiKey(process.env.SG_MAIL);
         const msg = {
           to: req.body.Email,
