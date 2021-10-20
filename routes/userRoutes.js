@@ -46,9 +46,7 @@ router.post('/api/newuser', async (req, res) => {
   try {
     const savedUser = await user.save();
     res.send({ message: 'Your account has been created!', correct: true });
-    sgMail.setApiKey(
-      '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'
-    );
+    sgMail.setApiKey(process.env.SG_MAIL);
     const msg = {
       to: req.body.Email,
       from: 'mntasks@interia.pl',
@@ -68,7 +66,7 @@ router.post('/api/confirm', async (req, res) => {
   if (!user) return res.send({ message: 'Something went wrong' });
 
   user.confirmedAccount = true;
-  user.save().then((result) => {
+  user.save().then(result => {
     res.send({ message: 'Successful confirm account', correct: true });
   });
 });
@@ -79,17 +77,15 @@ router.post('/api/resetPassword', (req, res) => {
   if (error) return res.send({ message: error.details[0].message });
 
   Users.findOne({ email: req.body.Email })
-    .then((user) => {
+    .then(user => {
       if (!user) {
         return res.send({ message: 'Email not found' });
       }
       const t = token(32);
       user.resetToken = t;
       user.expireToken = Date.now() + 8000000;
-      user.save().then((result) => {
-        sgMail.setApiKey(
-          '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'
-        );
+      user.save().then(result => {
+        sgMail.setApiKey(process.env.SG_MAIL);
         const msg = {
           to: req.body.Email,
           from: 'mntasks@interia.pl',
@@ -102,7 +98,7 @@ router.post('/api/resetPassword', (req, res) => {
         res.send({ message: 'Check your email', correct: true });
       });
     })
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
 });
 router.post('/api/newPassword', (req, res) => {
   const { error } = newPasswordValidation(req.body);
@@ -115,15 +111,15 @@ router.post('/api/newPassword', (req, res) => {
   const { newPassword, confrimNewPassword, token } = req.body;
 
   Users.findOne({ resetToken: token, expireToken: { $gt: Date.now() } })
-    .then((user) => {
+    .then(user => {
       if (!user) {
         return res.send({ message: 'Try again session expired' });
       }
-      bcrypt.hash(newPassword, 10).then((hashedpassword) => {
+      bcrypt.hash(newPassword, 10).then(hashedpassword => {
         user.password = hashedpassword;
         user.resetToken = undefined;
         user.expireToken = undefined;
-        user.save().then((saveduser) => {
+        user.save().then(saveduser => {
           res.send({
             message: 'Your password has been changed',
             correct: true,
@@ -131,7 +127,7 @@ router.post('/api/newPassword', (req, res) => {
         });
       });
     })
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
 });
 
 router.post('/api/login', async (req, res, next) => {
@@ -223,9 +219,7 @@ router.post('/api/payCard', async (req, res) => {
     );
 
     req.session.user.credits += creditsAdd;
-    sgMail.setApiKey(
-      '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'
-    );
+    sgMail.setApiKey(process.env.SG_MAIL);
     const msg = {
       to: req.session.user.email,
       from: 'mntasks@interia.pl',
@@ -312,9 +306,7 @@ router.post('/api/message', (req, res) => {
 
   const { Subject, Email, Message } = req.body;
 
-  sgMail.setApiKey(
-    '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'
-  );
+  sgMail.setApiKey(process.env.SG_MAIL);
   const msg = {
     to: 'mntasks@interia.pl',
     from: 'mntasks@interia.pl',
